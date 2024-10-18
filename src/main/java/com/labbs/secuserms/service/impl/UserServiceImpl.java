@@ -1,5 +1,6 @@
 package com.labbs.secuserms.service.impl;
 
+import com.labbs.secuserms.dto.response.UserResponseDTO;
 import com.labbs.secuserms.model.User;
 import com.labbs.secuserms.repository.UserRepository;
 import com.labbs.secuserms.service.UserService;
@@ -17,7 +18,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public List<UserResponseDTO> findAll() {
+        List<User> users = userRepository.findAll();
+        return UserResponseDTO.from(users);
     }
 }
